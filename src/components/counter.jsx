@@ -7,8 +7,14 @@ class Counter extends Component {
   };
 
   styles = {
+    fontSize: 20,
     fontWeight: "bold",
   };
+
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-";
+    return (classes += this.state.count === 0 ? "primary" : "warning");
+  }
 
   formatState() {
     const { count } = this.state;
@@ -17,11 +23,10 @@ class Counter extends Component {
   render() {
     return (
       <React.Fragment>
-        <img src={this.state.imageUrl}></img>
-        <span style={{ fontSize: 40 }} className="badge badge-primary m-2">
+        <span style={this.styles} className={this.getBadgeClasses()}>
           {this.formatState()}
         </span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <button className={"btn btn-secondary btn-sm"}>Increment</button>
       </React.Fragment>
     );
   }
