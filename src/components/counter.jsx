@@ -4,7 +4,7 @@ class Counter extends Component {
   state = {
     count: 0,
     imageUrl: "http://picsum.photos/200",
-    tags: ["tag1", "tag2", "tag3"],
+    tags: [],
   };
 
   styles = {
@@ -24,7 +24,12 @@ class Counter extends Component {
   }
 
   render() {
-    return <React.Fragment>{this.renderTags()}</React.Fragment>;
+    return (
+      <div>
+        {this.state.tags.length === 0 && "Please create a new tag!"}
+        {this.renderTags()}
+      </div>
+    );
   }
 }
 
