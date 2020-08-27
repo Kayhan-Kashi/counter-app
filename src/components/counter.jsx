@@ -7,7 +7,6 @@ class Counter extends Component {
   };
 
   styles = {
-    fontSize: 40,
     fontWeight: "bold",
   };
 
@@ -19,7 +18,7 @@ class Counter extends Component {
     return (
       <React.Fragment>
         <img src={this.state.imageUrl}></img>
-        <span style={this.styles} className="badge badge-primary m-2">
+        <span style={{ fontSize: 40 }} className="badge badge-primary m-2">
           {this.formatState()}
         </span>
         <button className="btn btn-secondary btn-sm">Increment</button>
