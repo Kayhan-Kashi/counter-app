@@ -27,10 +27,14 @@ class Counter extends Component {
     return count === 0 ? "Zero" : this.state.count;
   }
 
-  handleIncrement = () => {
-    console.log("Increment clicked!", this);
+  handleIncrement = (product) => {
+    console.log("Increment clicked!", product);
     this.setState({ count: this.state.count + 1 });
   };
+
+  // doHandleIncrement = () => {
+  //   this.handleIncrement({ id: 1 });
+  // };
 
   render() {
     return (
@@ -39,7 +43,7 @@ class Counter extends Component {
           {this.formatState()}
         </span>
         <button
-          onClick={this.handleIncrement}
+          onClick={() => this.handleIncrement({ id: 1 })}
           style={this.styles}
           className={"btn btn-secondary btn-sm"}
         >
