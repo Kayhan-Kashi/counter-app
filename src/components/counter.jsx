@@ -7,6 +7,11 @@ class Counter extends Component {
     tags: [],
   };
 
+  // constructor() {
+  //   super();
+  //   this.handleIncrement = this.handleIncrement.bind(this);
+  // }
+
   styles = {
     fontSize: 20,
     fontWeight: "bold",
@@ -22,9 +27,9 @@ class Counter extends Component {
     return count === 0 ? "Zero" : this.state.count;
   }
 
-  handleIncrement() {
-    console.log("Increment clicked!");
-  }
+  handleIncrement = () => {
+    console.log("Increment clicked!", this);
+  };
 
   render() {
     return (
