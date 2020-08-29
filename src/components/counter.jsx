@@ -12,22 +12,33 @@ class Counter extends Component {
     fontWeight: "bold",
   };
 
-  renderTags() {
-    if (this.state.tags.length === 0) return <p>there is no tag!</p>;
-    return (
-      <ul>
-        {this.state.tags.map((tag) => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-    );
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-";
+    return (classes += this.state.count === 0 ? "primary" : "warning");
+  }
+
+  formatState() {
+    const { count } = this.state;
+    return count === 0 ? "Zero" : this.state.count;
+  }
+
+  handleIncrement() {
+    console.log("Increment clicked!");
   }
 
   render() {
     return (
       <div>
-        {this.state.tags.length === 0 && "Please create a new tag!"}
-        {this.renderTags()}
+        <span style={this.styles} className={this.getBadgeClasses()}>
+          {this.formatState()}
+        </span>
+        <button
+          onClick={this.handleIncrement}
+          style={this.styles}
+          className={"btn btn-secondary btn-sm"}
+        >
+          Increment
+        </button>
       </div>
     );
   }
