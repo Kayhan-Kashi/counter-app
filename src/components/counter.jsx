@@ -38,6 +38,8 @@ class Counter extends Component {
     console.log("props", this.props);
     return (
       <div>
+        {/* <h4>Counter #{this.props.children}</h4> */}
+        <h4>Counter #{this.props.id}</h4>
         <span style={this.styles} className={this.getBadgeClasses()}>
           {this.formatState()}
         </span>
