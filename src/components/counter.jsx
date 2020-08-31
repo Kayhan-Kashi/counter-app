@@ -2,9 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
-    imageUrl: "http://picsum.photos/200",
-    tags: [],
+    value: this.props.value,
   };
 
   // constructor() {
@@ -19,17 +17,17 @@ class Counter extends Component {
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    return (classes += this.state.count === 0 ? "primary" : "warning");
+    return (classes += this.state.value === 0 ? "primary" : "warning");
   }
 
   formatState() {
-    const { count } = this.state;
-    return count === 0 ? "Zero" : this.state.count;
+    const { value: value } = this.state;
+    return value === 0 ? "Zero" : this.state.value;
   }
 
   handleIncrement = (product) => {
     console.log("Increment clicked!", product);
-    this.setState({ count: this.state.count + 1 });
+    this.setState({ value: this.state.value + 1 });
   };
 
   // doHandleIncrement = () => {
@@ -37,6 +35,7 @@ class Counter extends Component {
   // };
 
   render() {
+    console.log("props", this.props);
     return (
       <div>
         <span style={this.styles} className={this.getBadgeClasses()}>
