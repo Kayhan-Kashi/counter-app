@@ -6,6 +6,18 @@ class Counter extends Component {
   //   this.handleIncrement = this.handleIncrement.bind(this);
   // }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prevProps", prevProps);
+    console.log("prevState", prevState);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      // AJAX call
+    }
+  }
+
+  componentWillUount() {
+    console.log("Counter - Unmount");
+  }
+
   styles = {
     fontSize: 20,
     fontWeight: "bold",
@@ -33,25 +45,36 @@ class Counter extends Component {
   render() {
     console.log("Counter - Rendered.");
     return (
-      <div>
+      <div class="row">
+        <div className="col-1">
+          <span style={this.styles} className={this.getBadgeClasses()}>
+            {this.formatState()}
+          </span>
+        </div>
+        <div className="col">
+          <button
+            onClick={() => this.props.onIncrement(this.props.counter)}
+            style={this.styles}
+            className={"btn btn-secondary btn-sm"}
+          >
+            +
+          </button>
+          <button
+            onClick={() => this.props.onDecrement(this.props.counter)}
+            style={this.styles}
+            className={"btn btn-secondary btn-sm m-2"}
+            disabled={this.props.counter.value === 0 ? "disabled" : ""}
+          >
+            -
+          </button>
+          <button
+            onClick={() => this.props.onDelete(this.props.counter.id)}
+            className="btn btn-danger btn-sm"
+          >
+            Delete
+          </button>
+        </div>
         {/* <h4>Counter #{this.props.children}</h4> */}
-        <h4>Counter #{this.props.counter.id}</h4>
-        <span style={this.styles} className={this.getBadgeClasses()}>
-          {this.formatState()}
-        </span>
-        <button
-          onClick={() => this.props.onIncrement(this.props.counter)}
-          style={this.styles}
-          className={"btn btn-secondary btn-sm"}
-        >
-          Increment
-        </button>
-        <button
-          onClick={() => this.props.onDelete(this.props.counter.id)}
-          className="btn btn-danger btn-sm m-2"
-        >
-          Delete
-        </button>
       </div>
     );
   }
